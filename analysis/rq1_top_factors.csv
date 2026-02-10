@@ -1,0 +1,7 @@
+factor_field,factor_label,n,mean,median,top_box_pct,pearson_with_intent,abs_corr,distribution
+Q39_1,Importance of CPA exam preparation in program value,199,4.382,5,86.9,0.315,0.315,"{""1"": 1, ""2"": 5, ""3"": 20, ""4"": 64, ""5"": 109}"
+Q53,Awareness of alternative CPA pathway before survey,145,0.607,1,0.0,0.26,0.26,"{""0"": 57, ""1"": 88}"
+Q30,150-credit education requirement influenced graduate enrollment,54,3.296,3.0,40.7,0.157,0.157,"{""1"": 4, ""2"": 10, ""3"": 18, ""4"": 10, ""5"": 12}"
+Q55,Belief that graduate degree increases lifetime earnings (ROI),144,3.847,4.0,70.8,0.096,0.096,"{""1"": 1, ""2"": 11, ""3"": 30, ""4"": 69, ""5"": 33}"
+Q49,Employer requires/encourages graduate degree,54,0.259,0.0,0.0,0.025,0.025,"{""0"": 40, ""1"": 14}"
+Q6,Perception of alternative pathway (fewer credits + extra work year),199,3.955,4,69.3,-0.0,0.0,"{""1"": 1, ""2"": 13, ""3"": 47, ""4"": 71, ""5"": 67}"
