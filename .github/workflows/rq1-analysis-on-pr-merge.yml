@@ -1,0 +1,52 @@
+name: RQ1 Analysis on PR Merge
+
+on:
+  pull_request:
+    types: [closed]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  run-rq1-analysis:
+    # Only run automatically when the PR was actually merged.
+    if: github.event_name == 'workflow_dispatch' || github.event.pull_request.merged == true
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.10'
+
+      - name: Run RQ1 analysis script
+        run: |
+          python analysis/rq1_analysis.py
+
+      - name: Verify expected outputs exist
+        run: |
+          test -f analysis/data_dictionary.csv
+          test -f analysis/rq1_variable_map.md
+          test -f analysis/rq1_top_factors.csv
+          test -f analysis/rq1_quotes.csv
+          test -f report/RQ1_findings.md
+          # at least one visualization
+          test -f figures/rq1_top_factors_corr.png
+
+      - name: Upload RQ1 outputs as artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: rq1-analysis-artifacts-${{ github.run_number }}
+          if-no-files-found: error
+          retention-days: 30
+          path: |
+            analysis/data_dictionary.csv
+            analysis/rq1_variable_map.md
+            analysis/rq1_top_factors.csv
+            analysis/rq1_quotes.csv
+            report/RQ1_findings.md
+            figures/*.png
